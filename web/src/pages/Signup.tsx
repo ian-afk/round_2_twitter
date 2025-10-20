@@ -82,11 +82,11 @@ function Signup() {
             password
           </label>
           <input
-            type="text"
+            type="password"
             className="border p-1 rounded"
             onChange={handleChange}
-            name="username"
-            value={inputs.username}
+            name="password"
+            value={inputs.password}
           />
         </div>
         <button type="submit">Signup</button>
