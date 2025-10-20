@@ -50,8 +50,7 @@ function App() {
 
       <Post />
       {isLoading && <p>Loading...</p>}
-      {isSuccess && data.length !== 0}
-      {isSuccess &&
+      {isSuccess && data.length !== 0 ? (
         data.map(({ content, _id, user, createdAt, comments }: DataI) => (
           <>
             <div className="relative">
@@ -92,7 +91,10 @@ function App() {
               </div>
             ))}
           </>
-        ))}
+        ))
+      ) : (
+        <>No post found</>
+      )}
     </>
   );
 }
