@@ -50,7 +50,7 @@ function App() {
 
       <Post />
       {isLoading && <p>Loading...</p>}
-      {}
+      {isSuccess && data.length !== 0}
       {isSuccess &&
         data.map(({ content, _id, user, createdAt, comments }: DataI) => (
           <>
