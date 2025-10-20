@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  twitter-database:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  twitter-backend:
+    build: ./backend
+    environment:
+      - PORT=3001
+      - DATABASE_URL=mongodb://twitter-database:27017/twitter
+    ports:
+      - "3001:3001"
+    depends_on:
+      - twitter-database
+
+  twitter-frontend:
+    build:
+      context: ./web
+      args:
+        VITE_BACKEND_URL: http://localhost:3001
+    ports:
+      - "3000:80"
+    depends_on:
+      - twitter-backend
